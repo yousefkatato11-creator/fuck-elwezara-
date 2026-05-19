@@ -7,8 +7,6 @@
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- PWA Meta Tags for iOS & Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,19 +15,21 @@
     <link rel="apple-touch-icon" href="images/sa_logo_real.png">
 
     <link rel="stylesheet" href="styles.css">
-    <!-- Google Fonts for accurate styling -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Segoe+UI&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Notification Stack Container (top of screen) -->
+    <div id="notification-stack"></div>
+
     <!-- Right Side Tab -->
-    <div class="side-tab">
+    <div class="side-tab" id="side-tab-btn">
         البديل الثاني
     </div>
 
     <!-- Main Content Centered -->
     <div class="main-content">
-        
+
         <!-- Ministry of Education Logo -->
         <div class="moe-logo-container">
             <img src="images/moe_logo_real.png" alt="وزارة التربية والتعليم والتعليم الفني" class="moe-logo">
@@ -37,7 +37,7 @@
 
         <!-- Login Form -->
         <div class="login-form">
-            <input type="text" class="login-input" value="b3b2a9b6e52" readonly>
+            <input type="text" class="login-input" placeholder="رمز دخول الاختبار." value="b3b2a9b6e52" readonly>
             <button class="login-btn">تسجيل الدخول</button>
         </div>
 
@@ -60,12 +60,9 @@
 
     <script src="app.js"></script>
     <script>
-        // Register Service Worker for PWA installation
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('SW registered:', reg.scope))
-                    .catch(err => console.log('SW error:', err));
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
             });
         }
     </script>
