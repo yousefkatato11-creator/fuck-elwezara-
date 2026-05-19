@@ -1,0 +1,26 @@
+{
+    "name": "SwiftAssess",
+    "short_name": "SwiftAssess",
+    "description": "منصة الامتحانات الإلكترونية - وزارة التربية والتعليم والتعليم الفني",
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "background_color": "#e2e8ec",
+    "theme_color": "#00AACB",
+    "lang": "ar",
+    "dir": "rtl",
+    "icons": [
+        {
+            "src": "images/sa_logo_real.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/sa_logo_real.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
