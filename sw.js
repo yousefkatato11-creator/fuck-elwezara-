@@ -1,12 +1,11 @@
-const CACHE_NAME = 'swiftassess-v1';
+const CACHE_NAME = 'swiftassess-v2';
 const ASSETS = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/app.js',
-    '/manifest.json',
-    '/images/moe_logo_real.png',
-    '/images/sa_logo_real.png'
+    './index.html',
+    './styles.css',
+    './app.js',
+    './manifest.json',
+    './images/moe_logo_real.png',
+    './images/sa_logo_real.png'
 ];
 
 // Install: cache all assets
@@ -27,9 +26,12 @@ self.addEventListener('activate', event => {
     self.clients.claim();
 });
 
-// Fetch: serve from cache first, fallback to network
+// Fetch: serve from cache, fallback to network
 self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request).then(cached => cached || fetch(event.request))
+        caches.match(event.request).then(cached => {
+            if (cached) return cached;
+            return fetch(event.request).catch(() => caches.match('./index.html'));
+        })
     );
 });
